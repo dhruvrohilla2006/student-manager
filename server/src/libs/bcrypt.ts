@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 
-const hashpass = async (passwordString: string) => {
+export const hashpass = async (passwordString: string) => {
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(passwordString, salt);
 
@@ -8,4 +8,10 @@ const hashpass = async (passwordString: string) => {
   return hash;
 };
 
-export default hashpass
+export const removehash = async (password:string,hashString:string) => {
+  const salt = await bcrypt.genSalt(10);
+  const pass = await bcrypt.compare(password,hashString)
+
+  return pass;
+}
+

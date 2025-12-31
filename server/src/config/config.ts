@@ -1,5 +1,6 @@
 import { configDotenv } from "dotenv";
 
+
 configDotenv();
 
 interface Config {
@@ -10,6 +11,7 @@ interface Config {
   USER: string;
   PASS: string;
   DATABASE: string;
+  secretkey:string
 }
 
 const config:Config = {
@@ -19,7 +21,8 @@ const config:Config = {
   DBPORT: Number(process.env.DBPORT ?? 3366),
   USER: process.env.USER ?? "root",
   PASS: process.env.PASS ?? "",
-  DATABASE: process.env.DATABASE ?? "smart_student"
+  DATABASE: process.env.DATABASE ?? "smart_student",
+  secretkey:String(process.env.secretkey)
 };
 
 export default config;
